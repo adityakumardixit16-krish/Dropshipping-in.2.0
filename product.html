@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Details</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <h2 style="text-align:center; margin-top:30px;">Product Details</h2>
+
+  <div class="product-box" style="max-width:400px; margin:20px auto; text-align:center;">
+    <h3 id="product-name">Product Name</h3>
+    <p id="product-price">Price</p>
+
+    <a 
+      id="whatsapp-link"
+      href="https://wa.me/9125506033"
+      class="buy-btn"
+      target="_blank">
+      Order on WhatsApp
+    </a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const price = params.get("price");
+
+    if (name && price) {
+      document.getElementById("product-name").innerText = name;
+      document.getElementById("product-price").innerText = "Price: ₹" + price;
+
+      const message = `I want to order ${name} Price ₹${price}`;
+      document.getElementById("whatsapp-link").href =
+        "https://wa.me/9125506033?text=" + encodeURIComponent(message);
+    }
+  </script>
+
+</body>
+</html>
